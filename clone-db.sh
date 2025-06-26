@@ -1,16 +1,16 @@
 #!/bin/bash
 set -o allexport
-source .db
+
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &>/dev/null && pwd )"
+source "${SCRIPT_DIR}/.db"
+
 set +o allexport
 
 # Tên file backup
 BACKUP_FILE="develop_db_backup.sql"
 
 
-# Cấu hình thông tin Docker container local
-DOCKER_CONTAINER="airdata-cms-api-postgres-1"  # Tên hoặc ID container Docker chạy PostgreSQL
-LOCAL_USER="postgres"                          # Tên user trong Docker PostgreSQL
-LOCAL_PASSWORD="postgres"                      # Mật khẩu user trong Docker PostgreSQL
 
 # Export mật khẩu develop để sử dụng tự động
 export PGPASSWORD=$DEVELOP_PASSWORD
